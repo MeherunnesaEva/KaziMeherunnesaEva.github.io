@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kazi Meherunnesa Eva — AI & NLP Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f9f8f5;
+    --surface: #ffffff;
+    --border: rgba(0,0,0,0.08);
+    --text-primary: #1a1917;
+    --text-secondary: #6b6960;
+    --text-muted: #9e9c94;
+    --accent: #2563b0;
+    --accent-light: #e8f0fb;
+    --accent-muted: #4a7fd4;
+    --tag-bg: #edf2fb;
+    --tag-text: #1e4f9e;
+    --green: #15803d;
+    --green-bg: #f0faf4;
+    --amber: #92400e;
+    --amber-bg: #fef9ec;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(249,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+  }
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+  .nav-links a {
+    display: block;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-links a:hover { background: var(--accent-light); color: var(--accent); }
+
+  /* LAYOUT */
+  main { max-width: 860px; margin: 0 auto; padding: 0 2rem 5rem; }
+
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--accent-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  h1 strong { font-weight: 500; display: block; }
+  .hero-tagline {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 440px;
+    line-height: 1.75;
+    margin-bottom: 2rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: 1.5px solid var(--accent);
+  }
+  .btn-primary:hover { background: #1d52a0; border-color: #1d52a0; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: #bbb; background: var(--surface); }
+  .hero-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c7d9f5, #e8f0fb);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--accent);
+    border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--border);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  /* SECTION */
+  section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+  h2 { font-size: 1.4rem; font-weight: 500; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 640px;
+  }
+  .about-text strong { color: var(--text-primary); font-weight: 500; }
+
+  /* SKILLS GRID */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  .skill-group {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+  }
+  .skill-group-title {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 12px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 400;
+  }
+
+  /* EXPERIENCE */
+  .exp-item { margin-bottom: 2rem; padding-left: 1.25rem; border-left: 2px solid var(--accent-light); }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-role { font-size: 15px; font-weight: 500; }
+  .exp-org { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.5rem; }
+  .exp-period {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.65rem;
+  }
+  .exp-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+  .exp-desc li { margin-bottom: 4px; padding-left: 4px; }
+  .exp-desc ul { padding-left: 1.1rem; }
+
+  /* PUBLICATION */
+  .pub-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.4rem 1.5rem;
+  }
+  .pub-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: var(--green-bg);
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.03em;
+  }
+  .pub-title { font-size: 15px; font-weight: 500; line-height: 1.5; margin-bottom: 0.6rem; }
+  .pub-authors { font-size: 13px; color: var(--text-secondary); margin-bottom: 0.4rem; }
+  .pub-venue {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    color: var(--text-muted);
+  }
+  .pub-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 0.75rem;
+    font-weight: 500;
+  }
+  .pub-link:hover { text-decoration: underline; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+  }
+  .edu-degree { font-size: 14px; font-weight: 500; }
+  .edu-school { font-size: 13px; color: var(--text-secondary); margin: 2px 0; }
+  .edu-period { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--text-muted); }
+  .edu-gpa {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievement-list { display: flex; flex-direction: column; gap: 10px; }
+  .achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 14px;
+  }
+  .achievement-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* CERTIFICATES */
+  .cert-section { margin-top: 2rem; }
+  .cert-note {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    padding: 10px 14px;
+    background: var(--amber-bg);
+    border-radius: 8px;
+    border-left: 3px solid #f59e0b;
+  }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .cert-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .cert-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    background: var(--accent-light);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .cert-name { font-size: 13px; font-weight: 500; }
+  .cert-issuer { font-size: 12px; color: var(--text-muted); }
+  .cert-upload-area {
+    border: 2px dashed var(--border);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .cert-upload-area:hover { border-color: var(--accent); background: var(--accent-light); }
+
+  /* CONTACT */
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
+  .contact-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .contact-card:hover { border-color: var(--accent); background: var(--accent-light); }
+  .contact-label { font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 2px; }
+  .contact-value { font-weight: 500; font-size: 13px; }
+  .contact-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 0 2.5rem; }
+    .hero-avatar { width: 100px; height: 100px; font-size: 2rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1rem; }
+    main { padding: 0 1rem 4rem; }
+    .nav-links a { padding: 6px 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">KME</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certificates">Certificates</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" style="border-bottom: 1px solid var(--border); padding-bottom: 4rem;">
+    <div>
+      <p class="hero-eyebrow">Research Assistant · NLP & ML Lab, DIU</p>
+      <h1>Kazi<br><strong>Meherunnesa Eva</strong></h1>
+      <p class="hero-tagline">
+        Computer Science graduate specializing in <strong style="color:var(--text-primary); font-weight:500;">Natural Language Processing</strong>, Machine Learning, and AI-driven systems. Currently pursuing an MSc in Data Science while contributing to Scopus-indexed research.
+      </p>
+      <div class="hero-cta">
+        <a href="Eva_Resume_1page.pdf" class="btn btn-primary" download>Download CV</a>
+        <a href="https://www.researchgate.net/profile/Kazi-Eva-2" target="_blank" class="btn btn-secondary">ResearchGate ↗</a>
+        <a href="#contact" class="btn btn-secondary">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-avatar">KE</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">01 — About</p>
+    <p class="about-text">
+      I'm a researcher and Computer Science graduate from <strong>Daffodil International University</strong>, Dhaka. My work sits at the intersection of language, culture, and AI — specifically building models that understand <strong>code-mixed Bangla-English (Banglish) text</strong>, a language variety spoken by millions but underrepresented in NLP research.
+    </p>
+    <br>
+    <p class="about-text" style="margin-top: 0.75rem;">
+      I'm currently a Research Assistant in the <strong>DIU NLP & ML Lab</strong>, contributing to peer-reviewed publications and mentoring undergraduate students on research methodology. My interests extend into <strong>Explainable AI</strong>, secure AI systems for healthcare, and scalable deployment of ML models in real-world environments.
+    </p>
+
+    <div style="margin-top: 2.5rem;">
+      <div class="section-label" style="margin-bottom: 1.25rem;">Skills & tools</div>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">C/C++</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI & ML</div>
+          <div class="skill-tags">
+            <span class="tag">NLP</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">LLMs</span>
+            <span class="tag">Transformers</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Frameworks</div>
+          <div class="skill-tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">Hugging Face</span>
+            <span class="tag">Scikit-learn</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Data</div>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">EDA</span>
+            <span class="tag">Power BI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label">02 — Experience</p>
+    <div class="exp-item">
+      <div class="exp-role">Research Assistant</div>
+      <div class="exp-org">DIU NLP & ML Research Lab · Daffodil International University</div>
+      <span class="exp-period">Oct 2025 – Present</span>
+      <div class="exp-desc">
+        <ul>
+          <li>Collaborating with faculty on NLP and ML model development, data preprocessing, and experimental evaluation for research publications.</li>
+          <li>Assisting in mentoring undergraduate students in implementing ML and NLP projects.</li>
+          <li>Guiding students in research methodologies and technical problem-solving approaches.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-role">Undergraduate Thesis Researcher</div>
+      <div class="exp-org">Daffodil International University</div>
+      <span class="exp-period">2024 – 2025</span>
+      <div class="exp-desc">
+        <ul>
+          <li>Developed a novel emotion classification dataset for code-mixed Banglish text, ensuring annotation consistency and labeling reliability.</li>
+          <li>Collaborated with psychology domain experts to design, validate, and refine emotion annotation guidelines.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH / PUBLICATION -->
+  <section id="research">
+    <p class="section-label">03 — Research & Publications</p>
+    <div class="pub-card">
+      <div class="pub-badge">✓ Accepted · Scopus Indexed</div>
+      <p class="pub-title">Detecting Emotions Using Transformer-Based Models in Transliterated Bangla (Banglish) Text</p>
+      <p class="pub-authors">Kazi Meherunnesa Eva, Fardin Ahmed Alvi, Sadman Sadik Khan, Mahir Al Imran Sagor, Kazi Meherunnesa Dola, Md. Shahariar Jahangir</p>
+      <p class="pub-venue">16th IEEE International Conference on Computing, Communication and Networking Technologies (ICCCNT), India · July 2025</p>
+      <a href="https://www.researchgate.net/profile/Kazi-Eva-2" target="_blank" class="pub-link">View on ResearchGate ↗</a>
+    </div>
+
+    <div style="margin-top: 2rem; padding: 1.25rem 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 10px;">
+      <div class="section-label" style="margin-bottom: 0.75rem;">Research interests</div>
+      <div class="skill-tags">
+        <span class="tag">Applied AI</span>
+        <span class="tag">Banglish NLP</span>
+        <span class="tag">Emotion Detection</span>
+        <span class="tag">Explainable AI</span>
+        <span class="tag">Healthcare AI</span>
+        <span class="tag">Model Robustness</span>
+        <span class="tag">Scalable ML</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label">04 — Education</p>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Science (Ongoing)</div>
+        <div class="edu-school">Daffodil International University</div>
+        <div class="edu-period">2026 – 2027 · CSE, Major in Data Science</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Science</div>
+        <div class="edu-school">Daffodil International University</div>
+        <div class="edu-period">2022 – 2025 · CSE</div>
+        <span class="edu-gpa">CGPA 3.88 / 4.00</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Higher Secondary Certificate</div>
+        <div class="edu-school">Shaheed Bir Uttam Lt Anwar Girls' College</div>
+        <div class="edu-period">2018 – 2020 · Science</div>
+        <span class="edu-gpa">GPA 5.00 / 5.00</span>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Secondary School Certificate</div>
+        <div class="edu-school">Monipur High School and College</div>
+        <div class="edu-period">2008 – 2018 · Science</div>
+        <span class="edu-gpa">GPA 5.00 / 5.00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates">
+    <p class="section-label">05 — Certificates & achievements</p>
+
+    <!-- TIER 1: RESEARCH & PROFESSIONAL -->
+    <div class="section-label" style="margin-bottom: 1rem; margin-top: 0;">Research & professional</div>
+    <div class="cert-grid">
+      <a href="icccnt_paper_presentation.pdf" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">🏛️</div>
+        <div>
+          <div class="cert-name">IEEE ICCCNT 2025 — Paper Presentation</div>
+          <div class="cert-issuer">IIT Indore · July 2025</div>
+        </div>
+      </a>
+      <a href="datathon_certificate.png" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">Datathon Contest Fall 2024</div>
+          <div class="cert-issuer">Daffodil International University · 2024</div>
+        </div>
+      </a>
+      <a href="Kazi_Meherunnesa_Eva-AI_Builder__Create_Agents___N8N_1-C43151.pdf" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">🤖</div>
+        <div>
+          <div class="cert-name">AI Builder: Create Agents & N8N</div>
+          <div class="cert-issuer">Ostad · Certificate ID: C43151</div>
+        </div>
+      </a>
+      <a href="all_transcript__merged.pdf" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">BSc — Computer Science & Engineering</div>
+          <div class="cert-issuer">Daffodil International University · Jan 2026 · CGPA 3.88</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TIER 2: COMPETITIONS -->
+    <div class="section-label" style="margin-bottom: 1rem; margin-top: 2rem;">Competitions & university events</div>
+    <div class="cert-grid">
+      <a href="NGPC_certificate.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">💻</div>
+        <div>
+          <div class="cert-name">National Girls' Programming Contest (NGPC)</div>
+          <div class="cert-issuer">DIU Binary Brains · Main Round · 2022</div>
+        </div>
+      </a>
+      <a href="DIU_growing_star_2022.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">🏆</div>
+        <div>
+          <div class="cert-name">DIU Growing Star — 8th Position</div>
+          <div class="cert-issuer">Daffodil International University · Spring 2022</div>
+        </div>
+      </a>
+      <a href="takeoff_Certificate.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit;">
+        <div class="cert-icon">🚀</div>
+        <div>
+          <div class="cert-name">Take-Off Programming Contest — CSE Fest 2022</div>
+          <div class="cert-issuer">Daffodil International University</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- TIER 3: SCHOOL & COLLEGE -->
+    <div class="section-label" style="margin-bottom: 1rem; margin-top: 2rem;">Earlier achievements</div>
+    <div class="cert-grid">
+      <a href="kabaddi_College.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit; opacity: 0.85;">
+        <div class="cert-icon">🥇</div>
+        <div>
+          <div class="cert-name">Kabaddi Tournament — Champion</div>
+          <div class="cert-issuer">Shaheed Bir Uttam Lt Anwar Girls' College</div>
+        </div>
+      </a>
+      <a href="arm_Forces_day.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit; opacity: 0.85;">
+        <div class="cert-icon">📚</div>
+        <div>
+          <div class="cert-name">Quiz Contest — 2nd Position</div>
+          <div class="cert-issuer">Armed Forces Day · Shaheed Bir Uttam Lt Anwar Girls' College</div>
+        </div>
+      </a>
+      <a href="basketBall_School.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit; opacity: 0.85;">
+        <div class="cert-icon">🏀</div>
+        <div>
+          <div class="cert-name">Basketball — Champion</div>
+          <div class="cert-issuer">Monipur High School & College · 2017</div>
+        </div>
+      </a>
+      <a href="handball_School.jpg" target="_blank" class="cert-card" style="text-decoration:none; color:inherit; opacity: 0.85;">
+        <div class="cert-icon">🤾</div>
+        <div>
+          <div class="cert-name">Handball — Runner-up</div>
+          <div class="cert-issuer">Monipur High School & College · 2017</div>
+        </div>
+      </a>
+    </div>
+
+    <p style="font-size: 12px; color: var(--text-muted); margin-top: 1.25rem;">
+      Click any card to open the certificate. Academic transcripts available upon request.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">06 — Contact</p>
+    <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 1.5rem;">Open to research collaborations, teaching opportunities, and project discussions.</p>
+    <div class="contact-grid">
+      <a href="mailto:meherunnesaeva970@gmail.com" class="contact-card">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">meherunnesaeva970@gmail.com</span>
+        </div>
+      </a>
+      <a href="tel:+8801941789426" class="contact-card">
+        <span class="contact-icon">📞</span>
+        <div>
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+880 1941-789426</span>
+        </div>
+      </a>
+      <a href="https://www.researchgate.net/profile/Kazi-Eva-2" target="_blank" class="contact-card">
+        <span class="contact-icon">🔬</span>
+        <div>
+          <span class="contact-label">ResearchGate</span>
+          <span class="contact-value">Kazi-Eva-2 ↗</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/in/meherunnesa-eva-5504d/" target="_blank" class="contact-card">
+        <span class="contact-icon">💼</span>
+        <div>
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">meherunnesa-eva ↗</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Kazi Meherunnesa Eva · Built with care · Dhaka, Bangladesh
+</footer>
+
+</body>
+</html>
